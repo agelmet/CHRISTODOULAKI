@@ -11,24 +11,27 @@
 
     <style>
         /* ═══════════════════════════════════════
-           CSS VARIABLES & RESET
+           LUXURY COLOR PALETTE & VARIABLES
         ═══════════════════════════════════════ */
         :root {
-            --cream: #f0dfce;
-            --terracotta: #a46651;
-            --black: #010101;
-            --warm-gray: #6e5a50;
-            --cream-light: #f7efe7;
-            --cream-dark: #e5d0bc;
-            --terracotta-light: #b8806e;
-            --terracotta-dark: #8a5544;
-            --overlay: rgba(1,1,1,0.55);
+            /* Luxury Palette */
+            --gold: #bf9553;         /* Elegant Gold */
+            --gold-light: #dfcaa8;   /* Soft Gold */
+            --gold-dark: #916c31;    /* Deep Gold */
+            
+            --charcoal: #181a1f;     /* Deep Slate / Charcoal */
+            --charcoal-light: #2c2f36;
+            
+            --gray: #686d76;         /* Muted Gray for text */
+            
+            --white: #ffffff;        /* Pure White */
+            --off-white: #fcfbf9;    /* Pristine Off-White */
+            --beige: #f4efe9;        /* Soft Warm Beige */
 
             --font-display: 'Cormorant Garamond', Georgia, serif;
             --font-body: 'Outfit', sans-serif;
 
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         *, *::before, *::after {
@@ -46,8 +49,8 @@
         body {
             font-family: var(--font-body);
             font-weight: 300;
-            color: var(--black);
-            background: var(--cream-light);
+            color: var(--charcoal);
+            background: var(--off-white);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -59,12 +62,12 @@
         ul, ol { list-style: none; }
 
         ::selection {
-            background: var(--terracotta);
-            color: var(--cream);
+            background: var(--gold);
+            color: var(--white);
         }
 
         /* ═══════════════════════════════════════
-           UTILITY
+           UTILITY CLASSES
         ═══════════════════════════════════════ */
         .container {
             width: 100%;
@@ -76,25 +79,25 @@
         .section-label {
             font-family: var(--font-body);
             font-weight: 400;
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             letter-spacing: 0.35em;
             text-transform: uppercase;
-            color: var(--terracotta);
+            color: var(--gold);
             margin-bottom: 1rem;
         }
 
         .section-title {
             font-family: var(--font-display);
             font-weight: 400;
-            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
             line-height: 1.15;
-            color: var(--black);
+            color: var(--charcoal);
             margin-bottom: 1.5rem;
         }
 
         .section-title em {
             font-style: italic;
-            color: var(--terracotta);
+            color: var(--gold);
         }
 
         /* Reveal animations */
@@ -118,7 +121,7 @@
         .preloader {
             position: fixed;
             inset: 0;
-            background: var(--cream);
+            background: var(--white);
             z-index: 10000;
             display: flex;
             align-items: center;
@@ -140,7 +143,7 @@
         .preloader-line {
             width: 60px;
             height: 1px;
-            background: var(--terracotta);
+            background: var(--gold);
             margin-top: 24px;
             animation: preloaderLine 1.6s ease-in-out infinite;
         }
@@ -154,7 +157,7 @@
         }
 
         /* ═══════════════════════════════════════
-           NAVIGATION
+           NAVIGATION (White Background)
         ═══════════════════════════════════════ */
         .nav {
             position: fixed;
@@ -162,33 +165,28 @@
             left: 0;
             width: 100%;
             z-index: 1000;
-            padding: 16px 0;
+            padding: 20px 0;
             transition: background 0.5s ease, padding 0.4s ease, box-shadow 0.4s ease;
         }
+        /* Nav is white when scrolled */
         .nav.scrolled {
-            background: rgba(240,223,206,0.92);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 8px 0;
-            box-shadow: 0 1px 0 rgba(110,90,80,0.08);
+            background: #ffffff;
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         .nav-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
-        .nav-logo {
-            display: flex;
-            align-items: center;
-        }
         .nav-logo img {
-            height: 80px;
+            height: 75px;
             width: auto;
             object-fit: contain;
-            transition: transform 0.5s var(--ease-out-expo), filter 0.5s ease, height 0.4s ease;
+            transition: transform 0.5s var(--ease-out-expo), height 0.4s ease;
         }
         .nav.scrolled .nav-logo img {
-            height: 60px;
+            height: 55px;
         }
         .nav-logo img:hover {
             transform: scale(1.05);
@@ -198,49 +196,50 @@
             align-items: center;
             gap: 2.5rem;
         }
+        /* Links are dark to contrast with the light/white backgrounds */
         .nav-links a {
             font-family: var(--font-body);
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             font-weight: 400;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--cream);
+            color: var(--charcoal);
             transition: color 0.3s ease;
             position: relative;
-        }
-        .nav.scrolled .nav-links a {
-            color: var(--warm-gray);
         }
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -4px;
+            bottom: -6px;
             left: 0;
             width: 0;
             height: 1px;
-            background: var(--terracotta);
+            background: var(--gold);
             transition: width 0.4s var(--ease-out-expo);
         }
         .nav-links a:hover::after {
             width: 100%;
         }
         .nav-links a:hover {
-            color: var(--terracotta);
+            color: var(--gold);
         }
         .nav-cta {
             font-family: var(--font-body);
-            font-size: 0.65rem;
-            font-weight: 400;
+            font-size: 0.7rem;
+            font-weight: 500;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--cream) !important;
-            background: var(--terracotta);
-            padding: 12px 28px;
-            transition: background 0.3s ease, transform 0.3s ease;
+            color: var(--white) !important;
+            background: var(--charcoal);
+            padding: 14px 32px;
+            border: 1px solid var(--charcoal);
+            transition: all 0.4s ease;
         }
         .nav-cta:hover {
-            background: var(--terracotta-dark);
-            transform: translateY(-1px);
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(191, 149, 83, 0.2);
         }
         .nav-cta::after { display: none !important; }
 
@@ -256,27 +255,24 @@
         .hamburger span {
             display: block;
             height: 1px;
-            background: var(--cream);
+            background: var(--charcoal);
             transition: all 0.4s var(--ease-out-expo);
         }
-        .nav.scrolled .hamburger span {
-            background: var(--warm-gray);
-        }
-        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); background: var(--white); }
         .hamburger.active span:nth-child(2) { opacity: 0; }
-        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); background: var(--white); }
 
         /* Mobile Menu */
         .mobile-menu {
             position: fixed;
             inset: 0;
-            background: var(--black);
+            background: var(--charcoal);
             z-index: 999;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 2rem;
+            gap: 2.5rem;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.5s ease, visibility 0.5s ease;
@@ -287,87 +283,90 @@
         }
         .mobile-menu a {
             font-family: var(--font-display);
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: 300;
-            color: var(--cream);
+            color: var(--white);
             letter-spacing: 0.05em;
             transition: color 0.3s ease;
         }
         .mobile-menu a:hover {
-            color: var(--terracotta);
+            color: var(--gold);
         }
 
         /* ═══════════════════════════════════════
-           HERO (Centered with Effects)
+           HERO (CSS Effects & Shadows Only)
         ═══════════════════════════════════════ */
         .hero {
             position: relative;
             height: 100vh;
-            min-height: 700px;
+            min-height: 750px;
             display: flex;
             align-items: center;
-            justify-content: center; /* Centered */
-            text-align: center;      /* Centered text */
+            justify-content: center;
+            text-align: center;
             overflow: hidden;
+            background: var(--off-white);
         }
-        .hero-bg {
+
+        /* Subtle glowing orbs & shadows */
+        .hero-glow {
             position: absolute;
-            inset: 0;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.5;
             z-index: 0;
+            animation: pulseGlow 15s ease-in-out infinite alternate;
         }
-        .hero-bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transform: scale(1.08);
-            animation: heroZoom 20s ease-in-out infinite alternate;
+        .glow-1 {
+            width: 40vw;
+            height: 40vw;
+            background: var(--gold-light);
+            top: -10%;
+            left: -10%;
         }
-        @keyframes heroZoom {
-            0% { transform: scale(1.08); }
-            100% { transform: scale(1.15); }
+        .glow-2 {
+            width: 35vw;
+            height: 35vw;
+            background: #e6dfd5;
+            bottom: -5%;
+            right: -5%;
+            animation-delay: 2s;
         }
-        .hero-overlay {
+        .glow-3 {
+            width: 25vw;
+            height: 25vw;
+            background: var(--beige);
+            top: 40%;
+            left: 40%;
+            animation-duration: 20s;
+        }
+        @keyframes pulseGlow {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.4; }
+            100% { transform: scale(1.2) translate(50px, 30px); opacity: 0.7; }
+        }
+
+        /* Elegant moving lines */
+        .hero-lines {
             position: absolute;
             inset: 0;
-            background: linear-gradient(
-                180deg,
-                rgba(0,0,0,0.6) 0%,
-                rgba(0,0,0,0.4) 50%,
-                rgba(0,0,0,0.7) 100%
-            );
             z-index: 1;
-        }
-        .hero-grain {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            opacity: 0.04;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            pointer-events: none;
-        }
-        
-        /* Animated Moving Lines */
-        .hero-moving-lines {
-            position: absolute;
-            inset: 0;
-            z-index: 2;
             pointer-events: none;
             overflow: hidden;
         }
-        .moving-line {
+        .h-line {
             position: absolute;
             width: 1px;
-            height: 150px;
-            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.4), transparent);
-            animation: lineFall linear infinite;
+            height: 200px;
+            background: linear-gradient(to bottom, transparent, rgba(191, 149, 83, 0.3), transparent);
+            animation: elegantFall linear infinite;
         }
-        .moving-line:nth-child(1) { left: 20%; top: -150px; animation-duration: 6s; animation-delay: 0s; }
-        .moving-line:nth-child(2) { left: 50%; top: -150px; animation-duration: 8s; animation-delay: 2s; }
-        .moving-line:nth-child(3) { left: 80%; top: -150px; animation-duration: 5s; animation-delay: 4s; }
-        .moving-line:nth-child(4) { left: 35%; top: -150px; animation-duration: 7s; animation-delay: 1s; }
-        .moving-line:nth-child(5) { left: 65%; top: -150px; animation-duration: 9s; animation-delay: 3s; }
-        @keyframes lineFall {
-            0% { transform: translateY(0); opacity: 0; }
+        .h-line:nth-child(1) { left: 15%; animation-duration: 10s; animation-delay: 0s; }
+        .h-line:nth-child(2) { left: 50%; animation-duration: 12s; animation-delay: 4s; }
+        .h-line:nth-child(3) { left: 85%; animation-duration: 9s; animation-delay: 2s; }
+        .h-line:nth-child(4) { left: 30%; animation-duration: 14s; animation-delay: 7s; }
+        .h-line:nth-child(5) { left: 70%; animation-duration: 11s; animation-delay: 5s; }
+        @keyframes elegantFall {
+            0% { transform: translateY(-200px); opacity: 0; }
             20% { opacity: 1; }
             80% { opacity: 1; }
             100% { transform: translateY(120vh); opacity: 0; }
@@ -376,66 +375,65 @@
         .hero-content {
             position: relative;
             z-index: 3;
-            max-width: 800px;
+            max-width: 900px;
             padding: 0 24px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
         .hero-line {
-            width: 40px;
-            height: 1px;
-            background: var(--terracotta);
-            margin: 0 auto 24px auto;
+            width: 2px;
+            height: 60px;
+            background: linear-gradient(to bottom, transparent, var(--gold));
+            margin: 0 auto 30px auto;
             opacity: 0;
-            animation: heroLineIn 1s 0.6s var(--ease-out-expo) forwards;
+            animation: heroLineDown 1.2s 0.4s var(--ease-out-expo) forwards;
         }
-        @keyframes heroLineIn {
-            from { width: 0; opacity: 0; }
-            to { width: 80px; opacity: 1; }
+        @keyframes heroLineDown {
+            from { transform: translateY(-40px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
         .hero-label {
             font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 400;
-            letter-spacing: 0.45em;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.4em;
             text-transform: uppercase;
-            color: var(--terracotta-light);
-            margin-bottom: 28px;
+            color: var(--gold-dark);
+            margin-bottom: 24px;
             opacity: 0;
             animation: heroFadeUp 1s 0.8s var(--ease-out-expo) forwards;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
         .hero-title {
             font-family: var(--font-display);
-            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-size: clamp(3rem, 7vw, 5.5rem);
             font-weight: 300;
             line-height: 1.1;
-            color: var(--cream);
-            margin-bottom: 20px;
+            color: var(--charcoal);
+            margin-bottom: 24px;
             opacity: 0;
             animation: heroFadeUp 1.2s 1s var(--ease-out-expo) forwards;
-            text-shadow: 0 8px 30px rgba(0,0,0,0.5); /* Strong shadow for visual effect */
+            /* Luxurious soft text shadow */
+            text-shadow: 0 10px 30px rgba(0,0,0,0.06);
         }
         .hero-title em {
             font-style: italic;
-            color: var(--terracotta-light);
+            color: var(--gold);
         }
         .hero-subtitle {
             font-family: var(--font-body);
-            font-size: clamp(1rem, 1.5vw, 1.2rem);
-            font-weight: 200;
-            line-height: 1.7;
-            color: rgba(240,223,206,0.9);
-            max-width: 600px;
+            font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+            font-weight: 300;
+            line-height: 1.8;
+            color: var(--gray);
+            max-width: 650px;
             margin: 0 auto 40px auto;
             opacity: 0;
             animation: heroFadeUp 1.2s 1.2s var(--ease-out-expo) forwards;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
         }
         .hero-actions {
             display: flex;
-            gap: 16px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
             opacity: 0;
@@ -445,94 +443,67 @@
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Buttons */
         .btn-primary {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 400;
+            font-size: 0.8rem;
+            font-weight: 500;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--cream);
-            background: var(--terracotta);
-            padding: 18px 40px;
-            transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            color: var(--white);
+            background: var(--gold);
+            padding: 20px 45px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(191, 149, 83, 0.25);
         }
         .btn-primary:hover {
-            background: var(--terracotta-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(164,102,81,0.4);
+            background: var(--charcoal);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(24, 26, 31, 0.2);
+            color: var(--white);
         }
         .btn-primary svg {
-            width: 14px;
-            height: 14px;
+            width: 16px;
+            height: 16px;
             transition: transform 0.3s ease;
         }
-        .btn-primary:hover svg { transform: translateX(4px); }
+        .btn-primary:hover svg { transform: translateX(5px); }
         
         .btn-secondary {
             display: inline-flex;
             align-items: center;
             font-family: var(--font-body);
-            font-size: 0.75rem;
-            font-weight: 400;
+            font-size: 0.8rem;
+            font-weight: 500;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--cream);
-            padding: 18px 40px;
-            border: 1px solid rgba(240,223,206,0.3);
-            transition: border-color 0.4s ease, background 0.4s ease;
-            backdrop-filter: blur(4px);
+            color: var(--charcoal);
+            background: transparent;
+            padding: 20px 45px;
+            border: 1px solid rgba(24, 26, 31, 0.15);
+            transition: all 0.4s ease;
         }
         .btn-secondary:hover {
-            border-color: var(--terracotta);
-            background: rgba(164,102,81,0.2);
-        }
-
-        .hero-scroll {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 3;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            opacity: 0;
-            animation: heroFadeUp 1s 2s var(--ease-out-expo) forwards;
-        }
-        .hero-scroll-text {
-            font-size: 0.6rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            color: rgba(240,223,206,0.6);
-        }
-        .hero-scroll-line {
-            width: 1px;
-            height: 40px;
-            background: linear-gradient(to bottom, var(--terracotta), transparent);
-            animation: scrollPulse 2s ease-in-out infinite;
-        }
-        @keyframes scrollPulse {
-            0%, 100% { opacity: 0.3; height: 40px; }
-            50% { opacity: 1; height: 50px; }
+            border-color: var(--charcoal);
+            background: rgba(24, 26, 31, 0.03);
         }
 
         /* ═══════════════════════════════════════
-           ABOUT / PHILOSOPHY
+           ABOUT
         ═══════════════════════════════════════ */
         .about {
-            padding: clamp(80px, 12vw, 160px) 0;
-            background: var(--cream-light);
+            padding: clamp(100px, 12vw, 180px) 0;
+            background: var(--white);
             position: relative;
         }
         .about-inner {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: clamp(40px, 6vw, 100px);
+            gap: clamp(50px, 8vw, 120px);
             align-items: center;
         }
         .about-image-wrap {
@@ -541,7 +512,8 @@
         .about-image-frame {
             position: relative;
             overflow: hidden;
-            aspect-ratio: 3/4;
+            aspect-ratio: 4/5;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.08);
         }
         .about-image-frame img {
             width: 100%;
@@ -550,93 +522,78 @@
             transition: transform 8s ease;
         }
         .about-image-frame:hover img {
-            transform: scale(1.04);
-        }
-        .about-image-accent {
-            position: absolute;
-            top: -20px;
-            left: -20px;
-            width: 100%;
-            height: 100%;
-            border: 1px solid var(--terracotta);
-            opacity: 0.25;
-            pointer-events: none;
-            transition: transform 0.6s var(--ease-out-expo);
-        }
-        .about-image-wrap:hover .about-image-accent {
-            transform: translate(-5px, -5px);
+            transform: scale(1.05);
         }
         .about-badge {
             position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background: var(--terracotta);
-            color: var(--cream);
-            padding: 24px;
-            min-width: 200px;
+            bottom: -30px;
+            right: -30px;
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 30px;
+            min-width: 220px;
             text-align: center;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
         .about-badge-number {
             font-family: var(--font-display);
             font-size: 1.8rem;
             font-weight: 300;
             line-height: 1.1;
+            color: var(--gold);
         }
         .about-badge-text {
-            font-size: 0.6rem;
-            letter-spacing: 0.2em;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
             text-transform: uppercase;
-            margin-top: 6px;
-            opacity: 0.9;
-        }
-        .about-text {
-            padding: 0;
+            margin-top: 8px;
+            opacity: 0.8;
         }
         .about-text p {
             font-family: var(--font-body);
-            font-size: 0.95rem;
+            font-size: 1rem;
             font-weight: 300;
             line-height: 1.85;
-            color: var(--warm-gray);
+            color: var(--gray);
             margin-bottom: 1.5rem;
         }
         .about-quote {
             font-family: var(--font-display);
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             font-style: italic;
-            line-height: 1.6;
-            color: var(--terracotta);
-            padding: 24px 0 24px 24px;
-            border-left: 2px solid var(--terracotta);
-            margin: 2rem 0;
+            line-height: 1.5;
+            color: var(--charcoal);
+            padding: 30px 0 30px 30px;
+            border-left: 2px solid var(--gold);
+            margin: 2.5rem 0;
+            background: linear-gradient(to right, rgba(191, 149, 83, 0.03), transparent);
         }
 
         /* ═══════════════════════════════════════
            SERVICES
         ═══════════════════════════════════════ */
         .services {
-            padding: clamp(80px, 12vw, 160px) 0;
-            background: var(--black);
-            color: var(--cream);
+            padding: clamp(100px, 12vw, 180px) 0;
+            background: var(--charcoal);
+            color: var(--white);
             position: relative;
             overflow: hidden;
         }
         .services::before {
             content: '';
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 50%;
+            top: -20%;
+            right: -10%;
+            width: 60%;
             height: 100%;
-            background: radial-gradient(ellipse at 80% 20%, rgba(164,102,81,0.06) 0%, transparent 60%);
+            background: radial-gradient(ellipse at center, rgba(191, 149, 83, 0.08) 0%, transparent 60%);
             pointer-events: none;
         }
-        .services .section-label { color: var(--terracotta-light); }
-        .services .section-title { color: var(--cream); }
+        .services .section-title { color: var(--white); }
         .services-header {
             text-align: center;
             max-width: 700px;
-            margin: 0 auto 60px;
+            margin: 0 auto 80px;
         }
         .services-grid {
             display: grid;
@@ -644,12 +601,11 @@
             gap: 2px;
         }
         .service-card {
-            padding: clamp(32px, 4vw, 56px);
-            background: rgba(240,223,206,0.03);
-            border: 1px solid rgba(240,223,206,0.06);
-            transition: background 0.5s ease, border-color 0.5s ease;
+            padding: clamp(40px, 5vw, 60px);
+            background: var(--charcoal-light);
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: background 0.5s ease, transform 0.5s ease;
             position: relative;
-            overflow: hidden;
         }
         .service-card::before {
             content: '';
@@ -658,116 +614,171 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--terracotta);
+            background: var(--gold);
             transition: width 0.8s var(--ease-out-expo);
         }
         .service-card:hover::before { width: 100%; }
         .service-card:hover {
-            background: rgba(240,223,206,0.06);
-            border-color: rgba(164,102,81,0.15);
+            background: #25282e;
+            transform: translateY(-5px);
+            z-index: 2;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         .service-icon {
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             margin-bottom: 24px;
-            color: var(--terracotta);
+            color: var(--gold);
         }
         .service-card h3 {
             font-family: var(--font-display);
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 400;
-            color: var(--cream);
+            color: var(--white);
             margin-bottom: 12px;
         }
         .service-card .service-includes {
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--terracotta-light);
-            margin-bottom: 16px;
-            font-weight: 400;
+            color: var(--gold-light);
+            margin-bottom: 20px;
         }
         .service-card p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 300;
-            line-height: 1.75;
-            color: rgba(240,223,206,0.6);
-        }
-        .service-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 20px;
-        }
-        .service-tag {
-            font-size: 0.6rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            padding: 6px 14px;
-            border: 1px solid rgba(240,223,206,0.12);
-            color: rgba(240,223,206,0.7);
+            line-height: 1.8;
+            color: rgba(255,255,255,0.6);
         }
 
         /* ═══════════════════════════════════════
-           PILLARS (Approaches)
+           ROADMAP (JOURNEY) SECTION
+        ═══════════════════════════════════════ */
+        .roadmap {
+            padding: clamp(100px, 12vw, 180px) 0;
+            background: var(--beige);
+            position: relative;
+        }
+        .roadmap-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+        .roadmap-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            position: relative;
+        }
+        /* Connecting line */
+        .roadmap-steps::before {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 1px;
+            background: rgba(191, 149, 83, 0.4);
+        }
+        .roadmap-step {
+            text-align: center;
+            padding: 0 20px;
+        }
+        .roadmap-step-dot {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 1px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--gold);
+            background: var(--beige);
+            position: relative;
+            z-index: 1;
+            transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease;
+        }
+        .roadmap-step:hover .roadmap-step-dot {
+            background: var(--gold);
+            color: var(--white);
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(191, 149, 83, 0.2);
+        }
+        .roadmap-step h4 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+        .roadmap-step p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--gray);
+        }
+
+        /* ═══════════════════════════════════════
+           PILLARS / APPROACHES
         ═══════════════════════════════════════ */
         .pillars {
-            padding: clamp(80px, 12vw, 160px) 0;
-            background: var(--cream);
-            position: relative;
+            padding: clamp(100px, 12vw, 180px) 0;
+            background: var(--white);
         }
         .pillars-header {
             text-align: center;
-            max-width: 600px;
-            margin: 0 auto 60px;
+            max-width: 700px;
+            margin: 0 auto 80px;
         }
         .pillars-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 columns for 3 approaches */
-            gap: 0;
-            border: 1px solid rgba(110,90,80,0.1);
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
         }
         .pillar-card {
-            padding: clamp(28px, 3vw, 48px);
+            padding: 50px 40px;
             text-align: center;
-            border-right: 1px solid rgba(110,90,80,0.1);
-            position: relative;
-            transition: background 0.4s ease;
+            background: var(--off-white);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
-        .pillar-card:last-child { border-right: none; }
         .pillar-card:hover {
-            background: rgba(164,102,81,0.04);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.04);
+            background: var(--white);
         }
         .pillar-number {
             font-family: var(--font-display);
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 300;
-            color: var(--terracotta);
-            opacity: 0.2;
+            color: var(--gold-light);
             line-height: 1;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
         }
         .pillar-card h3 {
             font-family: var(--font-display);
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 500;
-            color: var(--black);
-            margin-bottom: 14px;
+            color: var(--charcoal);
+            margin-bottom: 16px;
         }
         .pillar-card p {
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: 300;
-            line-height: 1.7;
-            color: var(--warm-gray);
+            line-height: 1.8;
+            color: var(--gray);
         }
 
         /* ═══════════════════════════════════════
-           CTA SECTION
+           CTA SECTION (Updated Copy & Look)
         ═══════════════════════════════════════ */
         .cta-section {
-            padding: clamp(80px, 12vw, 140px) 0;
-            background: var(--terracotta);
-            color: var(--cream);
+            padding: clamp(100px, 12vw, 160px) 0;
+            background: var(--gold);
+            color: var(--white);
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -776,120 +787,121 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at center, rgba(240,223,206,0.05) 0%, transparent 70%);
+            background: radial-gradient(ellipse at bottom, rgba(255,255,255,0.15) 0%, transparent 70%);
             pointer-events: none;
         }
-        .cta-section .section-label { color: rgba(240,223,206,0.6); }
+        .cta-section .section-label { color: rgba(255,255,255,0.8); }
         .cta-section .section-title {
-            color: var(--cream);
-            max-width: 700px;
-            margin: 0 auto 20px;
+            color: var(--white);
+            max-width: 800px;
+            margin: 0 auto 24px;
         }
         .cta-section p {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-weight: 300;
-            line-height: 1.7;
-            color: rgba(240,223,206,0.85);
-            max-width: 520px;
-            margin: 0 auto 36px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto 40px;
         }
         .btn-light {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-family: var(--font-body);
-            font-size: 0.68rem;
-            font-weight: 400;
+            font-size: 0.8rem;
+            font-weight: 500;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--terracotta);
-            background: var(--cream);
-            padding: 16px 40px;
-            transition: background 0.4s ease, transform 0.3s ease, box-shadow 0.4s ease;
+            color: var(--gold-dark);
+            background: var(--white);
+            padding: 20px 45px;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         .btn-light:hover {
-            background: #fff;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            color: var(--charcoal);
         }
 
         /* ═══════════════════════════════════════
            FOOTER
         ═══════════════════════════════════════ */
         .footer {
-            background: var(--black);
-            color: var(--cream);
-            padding: clamp(60px, 8vw, 100px) 0 0;
+            background: var(--charcoal);
+            color: var(--white);
+            padding: clamp(80px, 10vw, 120px) 0 0;
         }
         .footer-grid {
             display: grid;
             grid-template-columns: 1.5fr 1fr 1fr;
-            gap: clamp(30px, 5vw, 80px);
-            padding-bottom: clamp(40px, 6vw, 80px);
-            border-bottom: 1px solid rgba(240,223,206,0.06);
+            gap: clamp(40px, 6vw, 80px);
+            padding-bottom: clamp(50px, 6vw, 80px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .footer-brand p {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 300;
-            line-height: 1.75;
-            color: rgba(240,223,206,0.6);
-            margin-top: 16px;
-            max-width: 340px;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.5);
+            margin-top: 24px;
+            max-width: 360px;
         }
         .footer-brand-logo {
-            height: 60px;
+            height: 65px;
             object-fit: contain;
-            filter: drop-shadow(0 2px 8px rgba(164,102,81,0.15));
+            filter: brightness(0) invert(1) drop-shadow(0 2px 10px rgba(0,0,0,0.3)); /* Forces white logo if needed */
         }
         .footer h4 {
             font-family: var(--font-body);
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             font-weight: 500;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: var(--terracotta-light);
-            margin-bottom: 24px;
+            color: var(--gold);
+            margin-bottom: 28px;
         }
         .footer-contact-item {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 16px;
+            gap: 16px;
+            margin-bottom: 20px;
         }
         .footer-contact-item svg {
-            width: 16px;
-            height: 16px;
-            color: var(--terracotta);
+            width: 18px;
+            height: 18px;
+            color: var(--gold-light);
             flex-shrink: 0;
-            margin-top: 3px;
+            margin-top: 4px;
         }
         .footer-contact-item span,
         .footer-contact-item a {
-            font-size: 0.88rem;
+            font-size: 0.95rem;
             font-weight: 300;
-            color: rgba(240,223,206,0.7);
+            color: rgba(255,255,255,0.7);
             transition: color 0.3s ease;
-            line-height: 1.5;
+            line-height: 1.6;
         }
-        .footer-contact-item a:hover { color: var(--terracotta-light); }
+        .footer-contact-item a:hover { color: var(--gold); }
         .footer-hours-item {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 0.88rem;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
             font-weight: 300;
-            color: rgba(240,223,206,0.7);
+            color: rgba(255,255,255,0.7);
         }
         .footer-bottom {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 24px 0;
+            padding: 30px 0;
         }
         .footer-bottom span {
-            font-size: 0.72rem;
+            font-size: 0.8rem;
             font-weight: 300;
-            color: rgba(240,223,206,0.4);
+            color: rgba(255,255,255,0.3);
         }
 
         /* ═══════════════════════════════════════
@@ -899,37 +911,26 @@
             .nav-links { display: none; }
             .hamburger { display: flex; }
             .services-grid { grid-template-columns: 1fr; }
-            .pillars-grid { grid-template-columns: repeat(2, 1fr); }
-            .pillar-card:nth-child(2) { border-right: none; }
-            .pillar-card:nth-child(3) { border-top: 1px solid rgba(110,90,80,0.1); border-right: none; }
+            .pillars-grid { grid-template-columns: 1fr; gap: 20px; }
+            .roadmap-steps { grid-template-columns: repeat(2, 1fr); gap: 60px; }
+            .roadmap-steps::before { display: none; }
             .footer-grid { grid-template-columns: 1fr; }
+            .footer-brand-logo { filter: none; } /* Adjust filter if original logo is visible */
         }
 
         @media (max-width: 768px) {
             .about-inner { grid-template-columns: 1fr; }
-            .about-image-wrap { max-width: 400px; margin: 0 auto; }
-            .about-badge { right: 0; }
-            .pillars-grid { grid-template-columns: 1fr; }
-            .pillar-card { border-right: none; border-bottom: 1px solid rgba(110,90,80,0.1); }
-            .pillar-card:last-child { border-bottom: none; }
-            .pillar-card:nth-child(3) { border-top: none; }
-            .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
-            .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+            .about-image-wrap { max-width: 450px; margin: 0 auto; }
+            .about-badge { right: 0; bottom: -20px; }
+            .roadmap-steps { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+            
+            .hero-title { font-size: clamp(2.5rem, 9vw, 3.5rem); }
             .hero-content {
                 text-align: center;
-                margin-left: 0;
-                padding: 0 20px;
-                padding-top: 80px;
+                padding: 100px 20px 0 20px;
             }
-            .hero-line { margin: 0 auto 20px; }
-            .hero-label { font-size: 0.6rem; letter-spacing: 0.3em; margin-bottom: 20px; }
-            .hero-subtitle { font-size: 0.9rem; margin: 0 auto 32px; max-width: 400px; }
-            .hero-actions { justify-content: center; }
-        }
-
-        @media (max-width: 480px) {
-            .about-badge { position: relative; bottom: auto; right: auto; margin-top: 16px; }
-            .about-image-accent { display: none; }
+            .hero-subtitle { font-size: 1rem; margin: 0 auto 32px; max-width: 400px; }
         }
     </style>
 </head>
@@ -949,6 +950,7 @@
             <div class="nav-links">
                 <a href="#about">Βιογραφικο</a>
                 <a href="#services">Υπηρεσιες</a>
+                <a href="#roadmap">Διαδρομη</a>
                 <a href="#pillars">Προσεγγισεις</a>
                 <a href="#contact">Επικοινωνια</a>
                 <a href="mailto:Elenachr.psy@outlook.com" class="nav-cta">Κλειστε Ραντεβου</a>
@@ -964,31 +966,31 @@
     <div class="mobile-menu" id="mobileMenu">
         <a href="#about" onclick="closeMobile()">Βιογραφικο</a>
         <a href="#services" onclick="closeMobile()">Υπηρεσιες</a>
+        <a href="#roadmap" onclick="closeMobile()">Διαδρομη</a>
         <a href="#pillars" onclick="closeMobile()">Προσεγγισεις</a>
         <a href="#contact" onclick="closeMobile()">Επικοινωνια</a>
-        <a href="mailto:Elenachr.psy@outlook.com" onclick="closeMobile()">Κλειστε Ραντεβου</a>
+        <a href="mailto:Elenachr.psy@outlook.com" class="nav-cta" style="margin-top: 20px;" onclick="closeMobile()">Κλειστε Ραντεβου</a>
     </div>
 
     <section class="hero" id="top">
-        <div class="hero-bg">
-            <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1920&q=80" alt="Background">
-        </div>
-        <div class="hero-overlay"></div>
-        <div class="hero-grain"></div>
         
-        <div class="hero-moving-lines">
-            <div class="moving-line"></div>
-            <div class="moving-line"></div>
-            <div class="moving-line"></div>
-            <div class="moving-line"></div>
-            <div class="moving-line"></div>
+        <div class="hero-glow glow-1"></div>
+        <div class="hero-glow glow-2"></div>
+        <div class="hero-glow glow-3"></div>
+
+        <div class="hero-lines">
+            <div class="h-line"></div>
+            <div class="h-line"></div>
+            <div class="h-line"></div>
+            <div class="h-line"></div>
+            <div class="h-line"></div>
         </div>
 
         <div class="hero-content">
             <div class="hero-line"></div>
-            <div class="hero-label">Καλως ηρθατε στο ψηφιακο μου γραφειο</div>
-            <h1 class="hero-title">Έλενα <em>Χριστοδουλάκη</em> (MSc)</h1>
-            <p class="hero-subtitle">Αδειούχος Ψυχολόγος - Συμβουλευτική Ψυχολόγος. Η επαγγελματική μου προσέγγιση βασίζεται στη γεφύρωση της επιστημονικής γνώσης με την ανθρώπινη επαφή.</p>
+            <div class="hero-label">Ενα Ασφαλες Θεραπευτικο Πλαισιο</div>
+            <h1 class="hero-title">Έλενα <em>Χριστοδουλάκη</em> <span style="font-size: 0.6em; color: var(--gold);">(MSc)</span></h1>
+            <p class="hero-subtitle">Αδειούχος Ψυχολόγος - Συμβουλευτική Ψυχολόγος. Η επαγγελματική μου προσέγγιση βασίζεται στη γεφύρωση της επιστημονικής γνώσης με την ουσιαστική ανθρώπινη επαφή.</p>
             <div class="hero-actions">
                 <a href="mailto:Elenachr.psy@outlook.com" class="btn-primary">
                     Διαδικτυακη Συνεδρια
@@ -1010,21 +1012,52 @@
                     <div class="about-image-frame">
                         <img src="https://raw.githubusercontent.com/agelmet/CHRISTODOULAKI/refs/heads/main/1000007280.jpg" alt="Έλενα Χριστοδουλάκη">
                     </div>
-                    <div class="about-image-accent"></div>
                     <div class="about-badge">
-                        <div class="about-badge-number">University</div>
-                        <div class="about-badge-text">of Neapolis</div>
+                        <div class="about-badge-number">Neapolis</div>
+                        <div class="about-badge-text">University</div>
                     </div>
                 </div>
                 <div class="about-text">
-                    <div class="section-label reveal">Βιογραφικο</div>
-                    <h2 class="section-title reveal reveal-delay-1">Έλενα <em>Χριστοδουλάκη</em></h2>
+                    <div class="section-label reveal">Βιογραφικο σημειωμα</div>
+                    <h2 class="section-title reveal reveal-delay-1">Η Ψυχολόγος</h2>
                     <p class="reveal reveal-delay-2">Είμαι η Έλενα Χριστοδουλάκη (MSc), Αδειούχος Ψυχολόγος - Συμβουλευτική Ψυχολόγος, και σας καλωσορίζω στο ψηφιακό μου γραφείο. Ως πτυχιούχος Εφαρμοσμένης Ψυχολογίας και κάτοχος Μεταπτυχιακού Τίτλου στη Συμβουλευτική Ψυχολογία από το University of Neapolis, η επαγγελματική μου προσέγγιση βασίζεται στη γεφύρωση της επιστημονικής γνώσης με την ανθρώπινη επαφή.</p>
                     <p class="reveal reveal-delay-2">Η εμπειρία μου σε απαιτητικά πλαίσια, όπως το Πολυδύναμο Κέντρο «Άγιος Ιωάννης ο Ελεήμων», το Κέντρο Ημέρας Ιθάκη και το Σ.Κ.Ε.Ψ.Υ., με δίδαξε, ότι πίσω από κάθε δυσκολία υπάρχει μια ανθρώπινη ιστορία που αξίζει να ακουστεί και να κατανοηθεί.</p>
                     <blockquote class="about-quote reveal reveal-delay-3">
-                        Στόχος μου είναι η δημιουργία ενός ασφαλούς θεραπευτικού πλαισίου προσφέροντας θεραπευτικό αποτέλεσμα, χωρίς γεωγραφικούς περιορισμούς.
+                        Στόχος μου είναι η δημιουργία ενός ασφαλούς και εκλεπτυσμένου θεραπευτικού πλαισίου που προσφέρει ουσιαστικά αποτελέσματα, χωρίς γεωγραφικούς περιορισμούς.
                     </blockquote>
                     <p class="reveal reveal-delay-3">Η συμμετοχή μου ως ομιλήτρια σε σεμινάρια με θεματολογία την ψυχική υγεία, καθώς και η δραστηριοποίηση μου στην επιστημονική αρθρογραφία (Η Πύλη της Ψυχολογίας), αποτελούν βασικούς άξονες της συμβολής μου στη διάδοση επιστημονικά τεκμηριωμένης γνώσης.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="roadmap" id="roadmap">
+        <div class="container">
+            <div class="roadmap-header">
+                <div class="section-label reveal">Η Διαδικασια</div>
+                <h2 class="section-title reveal reveal-delay-1">Η Θεραπευτική <em>Διαδρομή</em></h2>
+                <p class="reveal reveal-delay-2" style="font-size: 1.05rem; font-weight: 300; color: var(--gray); margin-top: 10px;">Μια ξεκάθαρη, σταδιακή πορεία προς την εσωτερική σας ενδυνάμωση.</p>
+            </div>
+            <div class="roadmap-steps">
+                <div class="roadmap-step reveal">
+                    <div class="roadmap-step-dot">1</div>
+                    <h4>Πρώτη Επικοινωνία</h4>
+                    <p>Το πρώτο και σημαντικότερο βήμα. Επικοινωνείτε μέσω email ή τηλεφώνου για να ορίσουμε την ημέρα και ώρα της πρώτης διαδικτυακής μας συνάντησης.</p>
+                </div>
+                <div class="roadmap-step reveal reveal-delay-1">
+                    <div class="roadmap-step-dot">2</div>
+                    <h4>Αρχική Αξιολόγηση</h4>
+                    <p>Στις πρώτες συνεδρίες γνωριζόμαστε, ακούω τις ανάγκες σας και καταγράφουμε τους λόγους που σας οδήγησαν στη θεραπεία, χτίζοντας κλίμα εμπιστοσύνης.</p>
+                </div>
+                <div class="roadmap-step reveal reveal-delay-2">
+                    <div class="roadmap-step-dot">3</div>
+                    <h4>Εξατομικευμένο Πλάνο</h4>
+                    <p>Συνθέτοντας τα εργαλεία των θεραπευτικών προσεγγίσεων, σχεδιάζουμε ένα πρόγραμμα απόλυτα προσαρμοσμένο στη δική σας ιδιοσυγκρασία.</p>
+                </div>
+                <div class="roadmap-step reveal reveal-delay-3">
+                    <div class="roadmap-step-dot">4</div>
+                    <h4>Θεραπευτική Πορεία</h4>
+                    <p>Μέσα από σταθερές συναντήσεις, εργαζόμαστε πάνω στους στόχους σας με σκοπό την αυτογνωσία, τη λειτουργικότητα και τη διαρκή εξέλιξη.</p>
                 </div>
             </div>
         </div>
@@ -1033,64 +1066,44 @@
     <section class="services" id="services">
         <div class="container">
             <div class="services-header">
-                <div class="section-label reveal">Υπηρεσιες</div>
-                <h2 class="section-title reveal reveal-delay-1">Πως Μπορώ να <em>Βοηθήσω</em></h2>
+                <div class="section-label reveal">Παρεχομενες Υπηρεσιες</div>
+                <h2 class="section-title reveal reveal-delay-1">Τομείς <em>Εξειδίκευσης</em></h2>
             </div>
             <div class="services-grid">
 
                 <div class="service-card reveal">
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 5v5l3 3"/></svg>
                     <h3>Ατομική Ψυχοθεραπεία Ενηλίκων</h3>
-                    <div class="service-includes">Διαδικτυακές Συνεδρίες</div>
+                    <div class="service-includes">Αποκλειστικα Διαδικτυακες Συνεδριες</div>
                     <p>Η ατομική ψυχοθεραπεία προσφέρει έναν ασφαλή και εμπιστευτικό χώρο, όπου το άτομο μπορεί να εξερευνήσει σκέψεις, συναισθήματα και δυσκολίες που επηρεάζουν την καθημερινότητά του. Στόχος είναι η ενίσχυση της αυτογνωσίας και η ανάπτυξη πιο λειτουργικών τρόπων διαχείρισης των προσωπικών προκλήσεων.</p>
-                    <div class="service-tags">
-                        <span class="service-tag">Αυτογνωσία</span>
-                        <span class="service-tag">Λειτουργικότητα</span>
-                        <span class="service-tag">Ασφάλεια</span>
-                    </div>
                 </div>
 
                 <div class="service-card reveal reveal-delay-1">
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="12" r="3"/><path d="M12 2v4m0 12v4m10-10h-4M6 12H2m15.07-7.07-2.83 2.83M9.76 14.24l-2.83 2.83m11.14 0-2.83-2.83M9.76 9.76 6.93 6.93"/></svg>
                     <h3>Άγχος & Συναισθηματικές Δυσκολίες</h3>
-                    <div class="service-includes">Ανακούφιση & Ενδυνάμωση</div>
+                    <div class="service-includes">Ανακουφιση & Ισορροπια</div>
                     <p>Αντιμετώπιση και διαχείριση σε άγχος και στρες, κρίσεις πανικού, φοβίες, κοινωνικό άγχος, κατάθλιψη, και ψυχοσωματικά συμπτώματα. Δημιουργούμε μαζί τα κατάλληλα εργαλεία για να επανέλθει η ηρεμία στην καθημερινότητά σας.</p>
-                    <div class="service-tags">
-                        <span class="service-tag">Άγχος</span>
-                        <span class="service-tag">Κρίσεις Πανικού</span>
-                        <span class="service-tag">Κατάθλιψη</span>
-                    </div>
                 </div>
 
                 <div class="service-card reveal reveal-delay-2">
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87m-4-12a4 4 0 0 1 0 7.75"/></svg>
                     <h3>Σχέσεις & Εικόνα Εαυτού</h3>
-                    <div class="service-includes">Αυτοεκτίμηση & Εξέλιξη</div>
-                    <p>Εργαζόμαστε πάνω στην αυτοεκτίμηση και την αυτοεικόνα σας, αντιμετωπίζουμε δυσκολίες στις διαπροσωπικές σχέσεις ή στην εικόνα σώματος, και μαθαίνουμε τρόπους για την υγιή διαχείριση συναισθημάτων όπως ο θυμός και το πένθος.</p>
-                    <div class="service-tags">
-                        <span class="service-tag">Αυτοεκτίμηση</span>
-                        <span class="service-tag">Σχέσεις</span>
-                        <span class="service-tag">Εικόνα Σώματος</span>
-                    </div>
+                    <div class="service-includes">Αυτοεκτιμηση & Ενδυναμωση</div>
+                    <p>Εργαζόμαστε πάνω στην αυτοεκτίμηση και την αυτοεικόνα σας, αντιμετωπίζουμε δυσκολίες στις διαπροσωπικές σχέσεις ή στην εικόνα σώματος, και μαθαίνουμε τρόπους για την υγιή διαχείριση συναισθημάτων (όπως ο θυμός), προσαρμογή σε αλλαγές και διαχείριση πένθους.</p>
                 </div>
 
                 <div class="service-card reveal reveal-delay-3">
                     <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                     <h3>Ομαδική Ψυχοθεραπεία</h3>
-                    <div class="service-includes">Σύνδεση & Αλληλοϋποστήριξη</div>
-                    <p>Οι θεραπευτικές ομάδες αποτελούν έναν ασφαλή χώρο όπου τα μέλη μοιράζονται εμπειρίες με άτομα που αντιμετωπίζουν παρόμοιες δυσκολίες. Μέσα από τη δυναμική της ομάδας ενισχύεται η αίσθηση σύνδεσης και η ανάπτυξη νέων τρόπων διαχείρισης προκλήσεων.</p>
-                    <div class="service-tags">
-                        <span class="service-tag">Δυναμική Ομάδας</span>
-                        <span class="service-tag">Υποστήριξη</span>
-                        <span class="service-tag">Σύνδεση</span>
-                    </div>
+                    <div class="service-includes">Δυναμικη & Υποστηριξη</div>
+                    <p>Οι θεραπευτικές ομάδες αποτελούν έναν υποστηρικτικό χώρο όπου τα μέλη μοιράζονται εμπειρίες, σκέψεις και συναισθήματα με άτομα που αντιμετωπίζουν παρόμοιες δυσκολίες. Ενισχύεται η κατανόηση του εαυτού και η αίσθηση σύνδεσης.</p>
                 </div>
 
             </div>
 
-            <div style="text-align: center; margin-top: 48px;" class="reveal">
-                <a href="mailto:Elenachr.psy@outlook.com" class="btn-primary" style="background: var(--cream); color: var(--black);">
-                    Επικοινωνηστε Μαζι Μου
+            <div style="text-align: center; margin-top: 60px;" class="reveal">
+                <a href="mailto:Elenachr.psy@outlook.com" class="btn-primary">
+                    Προγραμματιστε τη Συνεδρια σας
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
@@ -1101,24 +1114,24 @@
     <section class="pillars" id="pillars">
         <div class="container">
             <div class="pillars-header">
-                <div class="section-label reveal">Θεραπευτικες Προσεγγισεις</div>
-                <h2 class="section-title reveal reveal-delay-1">Η Βάση της <em>Πρακτικής</em> Μου</h2>
+                <div class="section-label reveal">Επιστημονικο Υποβαθρο</div>
+                <h2 class="section-title reveal reveal-delay-1">Οι Θεραπευτικές μου <em>Προσεγγίσεις</em></h2>
             </div>
             <div class="pillars-grid">
                 <div class="pillar-card reveal">
                     <div class="pillar-number">01</div>
                     <h3>Προσωποκεντρική</h3>
-                    <p>Εστιάζει στη δημιουργία ενός αυθεντικού, αποδεκτικού και ενσυναισθητικού περιβάλλοντος, όπου το άτομο βρίσκει τη δύναμη να εξελιχθεί μέσα από τις δικές του εσωτερικές πηγές.</p>
+                    <p>Εστιάζει στη δημιουργία ενός αυθεντικού, αποδεκτικού και ενσυναισθητικού περιβάλλοντος. Στόχος είναι ο θεραπευόμενος να βρει τη δύναμη να εξελιχθεί μέσα από τις δικές του εσωτερικές πηγές, με γνώμονα τον απόλυτο σεβασμό στην ελευθερία του.</p>
                 </div>
                 <div class="pillar-card reveal reveal-delay-1">
                     <div class="pillar-number">02</div>
                     <h3>Γνωσιακή-Συμπεριφορική</h3>
-                    <p>Στοχεύει στην αναγνώριση και τροποποίηση δυσλειτουργικών σκέψεων και πεποιθήσεων, εξοπλίζοντας το άτομο με πρακτικά εργαλεία για την άμεση ανακούφιση από συμπτώματα.</p>
+                    <p>Μία πιο δομημένη και εστιασμένη στο "τώρα" μέθοδος. Στοχεύει στην αναγνώριση και τροποποίηση δυσλειτουργικών σκέψεων, εξοπλίζοντας το άτομο με πρακτικά εργαλεία για την άμεση και αποτελεσματική ανακούφιση από τα συμπτώματα.</p>
                 </div>
                 <div class="pillar-card reveal reveal-delay-2">
                     <div class="pillar-number">03</div>
                     <h3>Συστημική Θεραπεία</h3>
-                    <p>Κατανοεί το άτομο μέσα στο πλαίσιο των σχέσεων και των συστημάτων (οικογένεια, εργασία, κοινωνία) στα οποία ανήκει, φωτίζοντας τη δυναμική των αλληλεπιδράσεών του.</p>
+                    <p>Κατανοεί το άτομο όχι απομονωμένα, αλλά μέσα στο πλαίσιο των σχέσεων και των συστημάτων στα οποία ανήκει (οικογένεια, εργασία, κοινωνία), φωτίζοντας τη δυναμική και τους ρόλους που διαμορφώνουν τη συμπεριφορά του.</p>
                 </div>
             </div>
         </div>
@@ -1126,12 +1139,12 @@
 
     <section class="cta-section">
         <div class="container">
-            <div class="section-label reveal">Το Πρωτο Βημα</div>
-            <h2 class="section-title reveal reveal-delay-1">Η Αλλαγή Ξεκινάει <em>Σήμερα</em></h2>
-            <p class="reveal reveal-delay-2">Σήμερα εστιάζω αποκλειστικά στην παροχή διαδικτυακών συνεδριών. Επικοινωνήστε για να ορίσουμε την πρώτη σας συνεδρία σε ένα περιβάλλον απόλυτης αποδοχής και ασφάλειας.</p>
+            <div class="section-label reveal">Η Αρχη της Διαδρομης</div>
+            <h2 class="section-title reveal reveal-delay-1">Επενδύστε στην <em>Ευημερία</em> σας</h2>
+            <p class="reveal reveal-delay-2">Η ψυχική υγεία είναι η πολυτιμότερη επένδυση. Μέσα από τις αποκλειστικά διαδικτυακές μας συνεδρίες, σας προσφέρω έναν ασφαλή, ζεστό και επαγγελματικό χώρο για να ανακαλύψετε την καλύτερη εκδοχή του εαυτού σας, όπου κι αν βρίσκεστε.</p>
             <div class="reveal reveal-delay-3">
                 <a href="mailto:Elenachr.psy@outlook.com" class="btn-light">
-                    Στειλτε Email
+                    Επικοινωνηστε Μαζι Μου
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
@@ -1143,13 +1156,13 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <img src="https://raw.githubusercontent.com/agelmet/CHRISTODOULAKI/refs/heads/main/file_000000004b907243b13109c5967b8e54.png" alt="Logo" class="footer-brand-logo">
-                    <p>Αδειούχος Ψυχολόγος - Συμβουλευτική Ψυχολόγος (MSc). Ένας ασφαλής ψηφιακός χώρος, χωρίς γεωγραφικούς περιορισμούς, για να ανακαλύψετε τον εαυτό σας.</p>
+                    <p>Έλενα Χριστοδουλάκη (MSc). Αδειούχος Ψυχολόγος - Συμβουλευτική Ψυχολόγος. Ένας εκλεπτυσμένος και ασφαλής ψηφιακός χώρος, χωρίς γεωγραφικούς περιορισμούς.</p>
                 </div>
                 <div class="footer-contact">
                     <h4>Στοιχεια Επικοινωνιας</h4>
                     <div class="footer-contact-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                        <span>Αποκλειστικά Διαδικτυακές Συνεδρίες</span>
+                        <span>Παροχή Αποκλειστικά Διαδικτυακών Συνεδριών</span>
                     </div>
                     <div class="footer-contact-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -1161,12 +1174,12 @@
                     </div>
                 </div>
                 <div class="footer-hours">
-                    <h4>Ωραριο</h4>
+                    <h4>Ωραριο Λειτουργιας</h4>
                     <div class="footer-hours-item">
                         <span>Δευτέρα - Σάββατο</span>
                     </div>
                     <div class="footer-hours-item">
-                        <span style="color: var(--terracotta-light);">Κατόπιν Ραντεβού</span>
+                        <span style="color: var(--gold-light);">Κατόπιν Ραντεβού</span>
                     </div>
                 </div>
             </div>
@@ -1184,10 +1197,10 @@
             }, 1200);
         });
 
-        // Navigation scroll effect
+        // Navigation scroll effect (White background when scrolled)
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 60) {
+            if (window.scrollY > 50) {
                 nav.classList.add('scrolled');
             } else {
                 nav.classList.remove('scrolled');
