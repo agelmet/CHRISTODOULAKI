@@ -11,22 +11,22 @@
 
     <style>
         /* ═══════════════════════════════════════
-           LUXURY COLOR PALETTE & VARIABLES
+           LUXURY BROWN COLOR PALETTE & VARIABLES
         ═══════════════════════════════════════ */
         :root {
-            /* Luxury Palette */
-            --gold: #bf9553;         /* Elegant Gold */
-            --gold-light: #dfcaa8;   /* Soft Gold */
-            --gold-dark: #916c31;    /* Deep Gold */
+            /* Elegant Brown Palette */
+            --brown: #8e6545;         /* Warm Elegant Brown */
+            --brown-light: #c2aa99;   /* Soft Brown/Beige */
+            --brown-dark: #5c3f29;    /* Deep Chestnut Brown */
             
-            --charcoal: #181a1f;     /* Deep Slate / Charcoal */
-            --charcoal-light: #2c2f36;
+            --charcoal: #1f1d1c;     /* Deep Warm Slate */
+            --charcoal-light: #322f2d;
             
-            --gray: #686d76;         /* Muted Gray for text */
+            --gray: #75706c;         /* Warm Gray for text */
             
             --white: #ffffff;        /* Pure White */
-            --off-white: #fcfbf9;    /* Pristine Off-White */
-            --beige: #f4efe9;        /* Soft Warm Beige */
+            --off-white: #fdfcfb;    /* Pristine Off-White */
+            --beige: #f6f3f0;        /* Soft Warm Beige */
 
             --font-display: 'Cormorant Garamond', Georgia, serif;
             --font-body: 'Outfit', sans-serif;
@@ -62,7 +62,7 @@
         ul, ol { list-style: none; }
 
         ::selection {
-            background: var(--gold);
+            background: var(--brown);
             color: var(--white);
         }
 
@@ -82,7 +82,7 @@
             font-size: 0.75rem;
             letter-spacing: 0.35em;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--brown);
             margin-bottom: 1rem;
         }
 
@@ -97,7 +97,7 @@
 
         .section-title em {
             font-style: italic;
-            color: var(--gold);
+            color: var(--brown);
         }
 
         /* Reveal animations */
@@ -143,7 +143,7 @@
         .preloader-line {
             width: 60px;
             height: 1px;
-            background: var(--gold);
+            background: var(--brown);
             margin-top: 24px;
             animation: preloaderLine 1.6s ease-in-out infinite;
         }
@@ -214,14 +214,14 @@
             left: 0;
             width: 0;
             height: 1px;
-            background: var(--gold);
+            background: var(--brown);
             transition: width 0.4s var(--ease-out-expo);
         }
         .nav-links a:hover::after {
             width: 100%;
         }
         .nav-links a:hover {
-            color: var(--gold);
+            color: var(--brown);
         }
         .nav-cta {
             font-family: var(--font-body);
@@ -236,10 +236,10 @@
             transition: all 0.4s ease;
         }
         .nav-cta:hover {
-            background: var(--gold);
-            border-color: var(--gold);
+            background: var(--brown);
+            border-color: var(--brown);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(191, 149, 83, 0.2);
+            box-shadow: 0 10px 20px rgba(142, 101, 69, 0.2);
         }
         .nav-cta::after { display: none !important; }
 
@@ -290,7 +290,7 @@
             transition: color 0.3s ease;
         }
         .mobile-menu a:hover {
-            color: var(--gold);
+            color: var(--brown);
         }
 
         /* ═══════════════════════════════════════
@@ -305,7 +305,36 @@
             justify-content: center;
             text-align: center;
             overflow: hidden;
-            background: radial-gradient(circle at center, var(--white), var(--off-white));
+            background: radial-gradient(circle at center top, var(--white) 0%, var(--beige) 100%);
+        }
+
+        /* Subtle glowing orbs */
+        .hero-glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.4;
+            z-index: 0;
+            animation: pulseGlow 15s ease-in-out infinite alternate;
+        }
+        .glow-1 {
+            width: 40vw;
+            height: 40vw;
+            background: var(--brown-light);
+            top: -10%;
+            left: -10%;
+        }
+        .glow-3 {
+            width: 30vw;
+            height: 30vw;
+            background: #e3dcd5;
+            bottom: -10%;
+            left: 20%;
+            animation-duration: 20s;
+        }
+        @keyframes pulseGlow {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.3; }
+            100% { transform: scale(1.1) translate(30px, 20px); opacity: 0.5; }
         }
 
         /* Elegant moving lines */
@@ -320,7 +349,7 @@
             position: absolute;
             width: 1px;
             height: 200px;
-            background: linear-gradient(to bottom, transparent, rgba(191, 149, 83, 0.3), transparent);
+            background: linear-gradient(to bottom, transparent, rgba(142, 101, 69, 0.25), transparent);
             animation: elegantFall linear infinite;
         }
         .h-line:nth-child(1) { left: 15%; animation-duration: 10s; animation-delay: 0s; }
@@ -347,7 +376,7 @@
         .hero-line {
             width: 2px;
             height: 60px;
-            background: linear-gradient(to bottom, transparent, var(--gold));
+            background: linear-gradient(to bottom, transparent, var(--brown));
             margin: 0 auto 30px auto;
             opacity: 0;
             animation: heroLineDown 1.2s 0.4s var(--ease-out-expo) forwards;
@@ -362,7 +391,7 @@
             font-weight: 500;
             letter-spacing: 0.4em;
             text-transform: uppercase;
-            color: var(--gold-dark);
+            color: var(--brown-dark);
             margin-bottom: 24px;
             opacity: 0;
             animation: heroFadeUp 1s 0.8s var(--ease-out-expo) forwards;
@@ -381,7 +410,7 @@
         }
         .hero-title em {
             font-style: italic;
-            color: var(--gold);
+            color: var(--brown);
         }
         .hero-subtitle {
             font-family: var(--font-body);
@@ -418,15 +447,15 @@
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--white);
-            background: var(--gold);
+            background: var(--brown);
             padding: 20px 45px;
             transition: all 0.4s ease;
-            box-shadow: 0 10px 25px rgba(191, 149, 83, 0.25);
+            box-shadow: 0 10px 25px rgba(142, 101, 69, 0.25);
         }
         .btn-primary:hover {
             background: var(--charcoal);
             transform: translateY(-4px);
-            box-shadow: 0 15px 35px rgba(24, 26, 31, 0.2);
+            box-shadow: 0 15px 35px rgba(31, 29, 28, 0.2);
             color: var(--white);
         }
         .btn-primary svg {
@@ -447,12 +476,12 @@
             color: var(--charcoal);
             background: transparent;
             padding: 20px 45px;
-            border: 1px solid rgba(24, 26, 31, 0.15);
+            border: 1px solid rgba(31, 29, 28, 0.15);
             transition: all 0.4s ease;
         }
         .btn-secondary:hover {
             border-color: var(--charcoal);
-            background: rgba(24, 26, 31, 0.03);
+            background: rgba(31, 29, 28, 0.03);
         }
 
         /* ═══════════════════════════════════════
@@ -503,7 +532,7 @@
             font-size: 1.8rem;
             font-weight: 300;
             line-height: 1.1;
-            color: var(--gold);
+            color: var(--brown-light);
         }
         .about-badge-text {
             font-size: 0.65rem;
@@ -527,9 +556,9 @@
             line-height: 1.5;
             color: var(--charcoal);
             padding: 30px 0 30px 30px;
-            border-left: 2px solid var(--gold);
+            border-left: 2px solid var(--brown);
             margin: 2.5rem 0;
-            background: linear-gradient(to right, rgba(191, 149, 83, 0.03), transparent);
+            background: linear-gradient(to right, rgba(142, 101, 69, 0.03), transparent);
         }
 
         /* ═══════════════════════════════════════
@@ -549,7 +578,7 @@
             right: -10%;
             width: 60%;
             height: 100%;
-            background: radial-gradient(ellipse at center, rgba(191, 149, 83, 0.08) 0%, transparent 60%);
+            background: radial-gradient(ellipse at center, rgba(142, 101, 69, 0.08) 0%, transparent 60%);
             pointer-events: none;
         }
         .services .section-title { color: var(--white); }
@@ -577,12 +606,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gold);
+            background: var(--brown);
             transition: width 0.8s var(--ease-out-expo);
         }
         .service-card:hover::before { width: 100%; }
         .service-card:hover {
-            background: #25282e;
+            background: #2b2826;
             transform: translateY(-5px);
             z-index: 2;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
@@ -591,7 +620,7 @@
             width: 45px;
             height: 45px;
             margin-bottom: 24px;
-            color: var(--gold);
+            color: var(--brown);
         }
         .service-card h3 {
             font-family: var(--font-display);
@@ -604,7 +633,7 @@
             font-size: 0.75rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--gold-light);
+            color: var(--brown-light);
             margin-bottom: 20px;
         }
         .service-card p {
@@ -641,7 +670,7 @@
             left: 12.5%;
             right: 12.5%;
             height: 1px;
-            background: rgba(191, 149, 83, 0.4);
+            background: rgba(142, 101, 69, 0.4);
         }
         .roadmap-step {
             text-align: center;
@@ -651,24 +680,24 @@
             width: 70px;
             height: 70px;
             border-radius: 50%;
-            border: 1px solid var(--gold);
+            border: 1px solid var(--brown);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 30px;
             font-family: var(--font-display);
             font-size: 1.5rem;
-            color: var(--gold);
+            color: var(--brown);
             background: var(--beige);
             position: relative;
             z-index: 1;
             transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease;
         }
         .roadmap-step:hover .roadmap-step-dot {
-            background: var(--gold);
+            background: var(--brown);
             color: var(--white);
             transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(191, 149, 83, 0.2);
+            box-shadow: 0 10px 20px rgba(142, 101, 69, 0.2);
         }
         .roadmap-step h4 {
             font-family: var(--font-display);
@@ -717,7 +746,7 @@
             font-family: var(--font-display);
             font-size: 4rem;
             font-weight: 300;
-            color: var(--gold-light);
+            color: var(--brown-light);
             line-height: 1;
             margin-bottom: 24px;
         }
@@ -740,7 +769,7 @@
         ═══════════════════════════════════════ */
         .cta-section {
             padding: clamp(100px, 12vw, 160px) 0;
-            background: var(--gold);
+            background: var(--brown);
             color: var(--white);
             text-align: center;
             position: relative;
@@ -750,7 +779,7 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: radial-gradient(ellipse at bottom, rgba(255,255,255,0.15) 0%, transparent 70%);
+            background: radial-gradient(ellipse at bottom, rgba(255,255,255,0.1) 0%, transparent 70%);
             pointer-events: none;
         }
         .cta-section .section-label { color: rgba(255,255,255,0.8); }
@@ -776,7 +805,7 @@
             font-weight: 500;
             letter-spacing: 0.25em;
             text-transform: uppercase;
-            color: var(--gold-dark);
+            color: var(--brown-dark);
             background: var(--white);
             padding: 20px 45px;
             transition: all 0.4s ease;
@@ -807,8 +836,8 @@
             font-size: 0.95rem;
             font-weight: 300;
             line-height: 1.8;
-            color: rgba(255,255,255,0.5);
-            margin-top: 24px;
+            color: rgba(255,255,255,0.6);
+            margin-top: 10px;
             max-width: 360px;
         }
         .footer h4 {
@@ -817,7 +846,7 @@
             font-weight: 500;
             letter-spacing: 0.3em;
             text-transform: uppercase;
-            color: var(--gold);
+            color: var(--brown-light);
             margin-bottom: 28px;
         }
         .footer-contact-item {
@@ -829,7 +858,7 @@
         .footer-contact-item svg {
             width: 18px;
             height: 18px;
-            color: var(--gold-light);
+            color: var(--brown-light);
             flex-shrink: 0;
             margin-top: 4px;
         }
@@ -841,7 +870,7 @@
             transition: color 0.3s ease;
             line-height: 1.6;
         }
-        .footer-contact-item a:hover { color: var(--gold); }
+        .footer-contact-item a:hover { color: var(--brown-light); }
         .footer-hours-item {
             display: flex;
             justify-content: space-between;
@@ -931,6 +960,9 @@
 
     <section class="hero" id="top">
         
+        <div class="hero-glow glow-1"></div>
+        <div class="hero-glow glow-3"></div>
+
         <div class="hero-lines">
             <div class="h-line"></div>
             <div class="h-line"></div>
@@ -942,7 +974,7 @@
         <div class="hero-content">
             <div class="hero-line"></div>
             <div class="hero-label">Ενα Ασφαλες Θεραπευτικο Πλαισιο</div>
-            <h1 class="hero-title">Έλενα <em>Χριστοδουλάκη</em> <span style="font-size: 0.6em; color: var(--gold);">(MSc)</span></h1>
+            <h1 class="hero-title">Έλενα <em>Χριστοδουλάκη</em> <span style="font-size: 0.6em; color: var(--brown);">(MSc)</span></h1>
             <p class="hero-subtitle">Αδειούχος Ψυχολόγος - Συμβουλευτική Ψυχολόγος. Η επαγγελματική μου προσέγγιση βασίζεται στη γεφύρωση της επιστημονικής γνώσης με την ουσιαστική ανθρώπινη επαφή.</p>
             <div class="hero-actions">
                 <a href="mailto:Elenachr.psy@outlook.com" class="btn-primary">
@@ -1104,7 +1136,8 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <p>Έλενα Χριστοδουλάκη (MSc). Αδειούχος Ψυχολόγος - Συμβουλευτική Ψυχολόγος. Ένας εκλεπτυσμένος και ασφαλής ψηφιακός χώρος, χωρίς γεωγραφικούς περιορισμούς.</p>
+                    <h3 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; color: var(--white); margin-bottom: 16px;">Έλενα Χριστοδουλάκη</h3>
+                    <p>Αδειούχος Ψυχολόγος - Συμβουλευτική Ψυχολόγος (MSc). Ένας εκλεπτυσμένος και ασφαλής ψηφιακός χώρος, χωρίς γεωγραφικούς περιορισμούς.</p>
                 </div>
                 <div class="footer-contact">
                     <h4>Στοιχεια Επικοινωνιας</h4>
@@ -1127,7 +1160,7 @@
                         <span>Δευτέρα - Σάββατο</span>
                     </div>
                     <div class="footer-hours-item">
-                        <span style="color: var(--gold-light);">Κατόπιν Ραντεβού</span>
+                        <span style="color: var(--brown-light);">Κατόπιν Ραντεβού</span>
                     </div>
                 </div>
             </div>
