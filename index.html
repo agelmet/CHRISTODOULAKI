@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Έλενα Χριστοδουλάκη (MSc) — Ψυχολόγος / Συμβουλευτική Ψυχολόγος</title>
-    <link rel="icon" href="https://raw.githubusercontent.com/agelmet/CHRISTODOULAKI/refs/heads/main/file_000000004b907243b13109c5967b8e54.png" type="image/png">
+    <title>Έλενα Χριστοδουλάκη (MSc) — Ψυχολόγος - Συμβουλευτική Ψυχολόγος</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
@@ -134,10 +133,10 @@
             visibility: hidden;
             pointer-events: none;
         }
-        .preloader-logo {
-            width: 120px;
-            height: auto;
-            object-fit: contain;
+        .preloader-text {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--charcoal);
             animation: preloaderPulse 1.6s ease-in-out infinite;
         }
         .preloader-line {
@@ -168,10 +167,9 @@
             padding: 20px 0;
             transition: background 0.5s ease, padding 0.4s ease, box-shadow 0.4s ease;
         }
-        /* Nav is white when scrolled */
         .nav.scrolled {
             background: #ffffff;
-            padding: 10px 0;
+            padding: 15px 0;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         .nav-inner {
@@ -179,24 +177,22 @@
             align-items: center;
             justify-content: space-between;
         }
-        .nav-logo img {
-            height: 75px;
-            width: auto;
-            object-fit: contain;
-            transition: transform 0.5s var(--ease-out-expo), height 0.4s ease;
+        .nav-logo-text {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
         }
-        .nav.scrolled .nav-logo img {
-            height: 55px;
-        }
-        .nav-logo img:hover {
-            transform: scale(1.05);
+        .nav-logo-text:hover {
+            color: var(--brown);
         }
         .nav-links {
             display: flex;
             align-items: center;
             gap: 2.5rem;
         }
-        /* Links are dark to contrast with the light/white backgrounds */
         .nav-links a {
             font-family: var(--font-body);
             font-size: 0.75rem;
@@ -282,11 +278,12 @@
             visibility: visible;
         }
         .mobile-menu a {
-            font-family: var(--font-display);
-            font-size: 2.2rem;
-            font-weight: 300;
+            font-family: var(--font-body);
+            font-size: 1.4rem;
+            font-weight: 400;
             color: var(--white);
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
+            text-transform: uppercase; /* Fixed Menu Casing */
             transition: color 0.3s ease;
         }
         .mobile-menu a:hover {
@@ -405,7 +402,6 @@
             margin-bottom: 24px;
             opacity: 0;
             animation: heroFadeUp 1.2s 1s var(--ease-out-expo) forwards;
-            /* Luxurious soft text shadow */
             text-shadow: 0 10px 30px rgba(0,0,0,0.06);
         }
         .hero-title em {
@@ -516,31 +512,6 @@
         .about-image-frame:hover img {
             transform: scale(1.05);
         }
-        .about-badge {
-            position: absolute;
-            bottom: -30px;
-            right: -30px;
-            background: var(--charcoal);
-            color: var(--white);
-            padding: 30px;
-            min-width: 220px;
-            text-align: center;
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        .about-badge-number {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            font-weight: 300;
-            line-height: 1.1;
-            color: var(--brown-light);
-        }
-        .about-badge-text {
-            font-size: 0.65rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            margin-top: 8px;
-            opacity: 0.8;
-        }
         .about-text p {
             font-family: var(--font-body);
             font-size: 1rem;
@@ -559,6 +530,75 @@
             border-left: 2px solid var(--brown);
             margin: 2.5rem 0;
             background: linear-gradient(to right, rgba(142, 101, 69, 0.03), transparent);
+        }
+
+        /* ═══════════════════════════════════════
+           ROADMAP (JOURNEY) SECTION
+        ═══════════════════════════════════════ */
+        .roadmap {
+            padding: clamp(100px, 12vw, 180px) 0;
+            background: var(--beige);
+            position: relative;
+        }
+        .roadmap-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 80px;
+        }
+        .roadmap-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+            position: relative;
+        }
+        .roadmap-steps::before {
+            content: '';
+            position: absolute;
+            top: 35px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 1px;
+            background: rgba(142, 101, 69, 0.4);
+        }
+        .roadmap-step {
+            text-align: center;
+            padding: 0 20px;
+        }
+        .roadmap-step-dot {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 1px solid var(--brown);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            color: var(--brown);
+            background: var(--beige);
+            position: relative;
+            z-index: 1;
+            transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease;
+        }
+        .roadmap-step:hover .roadmap-step-dot {
+            background: var(--brown);
+            color: var(--white);
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(142, 101, 69, 0.2);
+        }
+        .roadmap-step h4 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            margin-bottom: 12px;
+        }
+        .roadmap-step p {
+            font-size: 0.95rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: var(--gray);
         }
 
         /* ═══════════════════════════════════════
@@ -644,76 +684,6 @@
         }
 
         /* ═══════════════════════════════════════
-           ROADMAP (JOURNEY) SECTION
-        ═══════════════════════════════════════ */
-        .roadmap {
-            padding: clamp(100px, 12vw, 180px) 0;
-            background: var(--beige);
-            position: relative;
-        }
-        .roadmap-header {
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 80px;
-        }
-        .roadmap-steps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 0;
-            position: relative;
-        }
-        /* Connecting line */
-        .roadmap-steps::before {
-            content: '';
-            position: absolute;
-            top: 35px;
-            left: 12.5%;
-            right: 12.5%;
-            height: 1px;
-            background: rgba(142, 101, 69, 0.4);
-        }
-        .roadmap-step {
-            text-align: center;
-            padding: 0 20px;
-        }
-        .roadmap-step-dot {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            border: 1px solid var(--brown);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            color: var(--brown);
-            background: var(--beige);
-            position: relative;
-            z-index: 1;
-            transition: background 0.4s ease, color 0.4s ease, transform 0.4s ease;
-        }
-        .roadmap-step:hover .roadmap-step-dot {
-            background: var(--brown);
-            color: var(--white);
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(142, 101, 69, 0.2);
-        }
-        .roadmap-step h4 {
-            font-family: var(--font-display);
-            font-size: 1.4rem;
-            font-weight: 500;
-            color: var(--charcoal);
-            margin-bottom: 12px;
-        }
-        .roadmap-step p {
-            font-size: 0.95rem;
-            font-weight: 300;
-            line-height: 1.7;
-            color: var(--gray);
-        }
-
-        /* ═══════════════════════════════════════
            PILLARS / APPROACHES
         ═══════════════════════════════════════ */
         .pillars {
@@ -765,7 +735,65 @@
         }
 
         /* ═══════════════════════════════════════
-           CTA SECTION (Updated Copy & Look)
+           FAQ SECTION
+        ═══════════════════════════════════════ */
+        .faq {
+            padding: clamp(100px, 12vw, 150px) 0;
+            background: var(--beige);
+        }
+        .faq-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 1px solid rgba(142, 101, 69, 0.2);
+        }
+        .faq-question {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            color: var(--charcoal);
+            cursor: pointer;
+            background: none;
+            border: none;
+            text-align: left;
+        }
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.4s ease;
+            color: var(--brown);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+        .faq-answer-inner {
+            padding-bottom: 24px;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+        }
+        .faq-item.active .faq-question svg {
+            transform: rotate(180deg);
+        }
+
+        /* ═══════════════════════════════════════
+           CTA SECTION (Fixed Contrast)
         ═══════════════════════════════════════ */
         .cta-section {
             padding: clamp(100px, 12vw, 160px) 0;
@@ -787,6 +815,10 @@
             color: var(--white);
             max-width: 800px;
             margin: 0 auto 24px;
+        }
+        /* Fixed Contrast for "Σήμερα" */
+        .cta-section .section-title em { 
+            color: var(--off-white); 
         }
         .cta-section p {
             font-size: 1.05rem;
@@ -907,7 +939,6 @@
         @media (max-width: 768px) {
             .about-inner { grid-template-columns: 1fr; }
             .about-image-wrap { max-width: 450px; margin: 0 auto; }
-            .about-badge { right: 0; bottom: -20px; }
             .roadmap-steps { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
             
@@ -924,22 +955,22 @@
 <body>
 
     <div class="preloader" id="preloader">
-        <img src="https://raw.githubusercontent.com/agelmet/CHRISTODOULAKI/refs/heads/main/file_000000004b907243b13109c5967b8e54.png" alt="Logo" class="preloader-logo">
+        <div class="preloader-text">Έλενα Χριστοδουλάκη</div>
         <div class="preloader-line"></div>
     </div>
 
     <nav class="nav" id="nav">
         <div class="container nav-inner">
-            <a href="#top" class="nav-logo">
-                <img src="https://raw.githubusercontent.com/agelmet/CHRISTODOULAKI/refs/heads/main/file_000000004b907243b13109c5967b8e54.png" alt="Έλενα Χριστοδουλάκη — Λογότυπο">
+            <a href="#top" class="nav-logo-text">
+                Έλενα Χριστοδουλάκη
             </a>
             <div class="nav-links">
                 <a href="#about">Βιογραφικο</a>
                 <a href="#services">Υπηρεσιες</a>
                 <a href="#roadmap">Διαδρομη</a>
                 <a href="#pillars">Προσεγγισεις</a>
-                <a href="#contact">Επικοινωνια</a>
-                <a href="mailto:Elenachr.psy@outlook.com" class="nav-cta">Κλειστε Ραντεβου</a>
+                <a href="#faq">Συχνες Ερωτησεις</a>
+                <a href="tel:6947840012" class="nav-cta">Κλειστε Ραντεβου</a>
             </div>
             <div class="hamburger" id="hamburger">
                 <span></span>
@@ -954,12 +985,11 @@
         <a href="#services" onclick="closeMobile()">Υπηρεσιες</a>
         <a href="#roadmap" onclick="closeMobile()">Διαδρομη</a>
         <a href="#pillars" onclick="closeMobile()">Προσεγγισεις</a>
-        <a href="#contact" onclick="closeMobile()">Επικοινωνια</a>
-        <a href="mailto:Elenachr.psy@outlook.com" class="nav-cta" style="margin-top: 20px;" onclick="closeMobile()">Κλειστε Ραντεβου</a>
+        <a href="#faq" onclick="closeMobile()">Συχνες Ερωτησεις</a>
+        <a href="tel:6947840012" class="nav-cta" style="margin-top: 20px;" onclick="closeMobile()">Κλειστε Ραντεβου</a>
     </div>
 
     <section class="hero" id="top">
-        
         <div class="hero-glow glow-1"></div>
         <div class="hero-glow glow-3"></div>
 
@@ -975,9 +1005,9 @@
             <div class="hero-line"></div>
             <div class="hero-label">Ενα Ασφαλες Θεραπευτικο Πλαισιο</div>
             <h1 class="hero-title">Έλενα <em>Χριστοδουλάκη</em> <span style="font-size: 0.6em; color: var(--brown);">(MSc)</span></h1>
-            <p class="hero-subtitle">Αδειούχος Ψυχολόγος - Συμβουλευτική Ψυχολόγος. Η επαγγελματική μου προσέγγιση βασίζεται στη γεφύρωση της επιστημονικής γνώσης με την ουσιαστική ανθρώπινη επαφή.</p>
+            <p class="hero-subtitle">Ψυχολόγος - Συμβουλευτική Ψυχολόγος (MSc). Η επαγγελματική μου προσέγγιση βασίζεται στη γεφύρωση της επιστημονικής γνώσης με την ουσιαστική ανθρώπινη επαφή.</p>
             <div class="hero-actions">
-                <a href="mailto:Elenachr.psy@outlook.com" class="btn-primary">
+                <a href="tel:6947840012" class="btn-primary">
                     Διαδικτυακη Συνεδρια
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -993,15 +1023,11 @@
                     <div class="about-image-frame">
                         <img src="https://raw.githubusercontent.com/agelmet/CHRISTODOULAKI/refs/heads/main/1000007280.jpg" alt="Έλενα Χριστοδουλάκη">
                     </div>
-                    <div class="about-badge">
-                        <div class="about-badge-number">Neapolis</div>
-                        <div class="about-badge-text">University</div>
-                    </div>
                 </div>
                 <div class="about-text">
                     <div class="section-label reveal">Βιογραφικο σημειωμα</div>
                     <h2 class="section-title reveal reveal-delay-1">Η Ψυχολόγος</h2>
-                    <p class="reveal reveal-delay-2">Είμαι η Έλενα Χριστοδουλάκη (MSc), Αδειούχος Ψυχολόγος - Συμβουλευτική Ψυχολόγος, και σας καλωσορίζω στο ψηφιακό μου γραφείο. Ως πτυχιούχος Εφαρμοσμένης Ψυχολογίας και κάτοχος Μεταπτυχιακού Τίτλου στη Συμβουλευτική Ψυχολογία από το University of Neapolis, η επαγγελματική μου προσέγγιση βασίζεται στη γεφύρωση της επιστημονικής γνώσης με την ανθρώπινη επαφή.</p>
+                    <p class="reveal reveal-delay-2">Είμαι η Έλενα Χριστοδουλάκη, Ψυχολόγος - Συμβουλευτική Ψυχολόγος (MSc), και σας καλωσορίζω στο ψηφιακό μου γραφείο. Ως πτυχιούχος Εφαρμοσμένης Ψυχολογίας και κάτοχος Μεταπτυχιακού Τίτλου στη Συμβουλευτική Ψυχολογία, η επαγγελματική μου προσέγγιση βασίζεται στη γεφύρωση της επιστημονικής γνώσης με την ανθρώπινη επαφή.</p>
                     <p class="reveal reveal-delay-2">Η εμπειρία μου σε απαιτητικά πλαίσια, όπως το Πολυδύναμο Κέντρο «Άγιος Ιωάννης ο Ελεήμων», το Κέντρο Ημέρας Ιθάκη και το Σ.Κ.Ε.Ψ.Υ., με δίδαξε, ότι πίσω από κάθε δυσκολία υπάρχει μια ανθρώπινη ιστορία που αξίζει να ακουστεί και να κατανοηθεί.</p>
                     <blockquote class="about-quote reveal reveal-delay-3">
                         Στόχος μου είναι η δημιουργία ενός ασφαλούς και εκλεπτυσμένου θεραπευτικού πλαισίου που προσφέρει ουσιαστικά αποτελέσματα, χωρίς γεωγραφικούς περιορισμούς.
@@ -1023,7 +1049,7 @@
                 <div class="roadmap-step reveal">
                     <div class="roadmap-step-dot">1</div>
                     <h4>Πρώτη Επικοινωνία</h4>
-                    <p>Το πρώτο και σημαντικότερο βήμα. Επικοινωνείτε μέσω email ή τηλεφώνου για να ορίσουμε την ημέρα και ώρα της πρώτης διαδικτυακής μας συνάντησης.</p>
+                    <p>Το πρώτο και σημαντικότερο βήμα. Επικοινωνείτε μαζί μου τηλεφωνικά για να ορίσουμε την ημέρα και ώρα της πρώτης διαδικτυακής μας συνάντησης.</p>
                 </div>
                 <div class="roadmap-step reveal reveal-delay-1">
                     <div class="roadmap-step-dot">2</div>
@@ -1083,7 +1109,7 @@
             </div>
 
             <div style="text-align: center; margin-top: 60px;" class="reveal">
-                <a href="mailto:Elenachr.psy@outlook.com" class="btn-primary">
+                <a href="tel:6947840012" class="btn-primary">
                     Προγραμματιστε τη Συνεδρια σας
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
@@ -1118,14 +1144,74 @@
         </div>
     </section>
 
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="faq-header">
+                <div class="section-label reveal">Λυνοντας Αποριες</div>
+                <h2 class="section-title reveal reveal-delay-1">Συχνές <em>Ερωτήσεις</em></h2>
+            </div>
+            <div class="faq-container reveal reveal-delay-2">
+                
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Πού πραγματοποιούνται οι συνεδρίες;</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Οι συνεδρίες πραγματοποιούνται αποκλειστικά διαδικτυακά. Αυτό προσφέρει ένα απόλυτα ασφαλές, βολικό και εμπιστευτικό πλαίσιο θεραπείας, ξεπερνώντας τους γεωγραφικούς περιορισμούς, όπου κι αν βρίσκεστε.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Τι είδους δυσκολίες αναλαμβάνετε;</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Εξειδικεύομαι, μεταξύ άλλων, σε αγχώδεις διαταραχές, κρίσεις πανικού, κατάθλιψη, δυσκολίες στις διαπροσωπικές σχέσεις, εικόνα σώματος, καθώς και ζητήματα προσωπικής ανάπτυξης και αυτοεκτίμησης.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Ποιες θεραπευτικές προσεγγίσεις χρησιμοποιείτε;</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Η θεραπευτική μου πρακτική βασίζεται στη σύνθεση τριών βασικών προσεγγίσεων: της Προσωποκεντρικής (ενσυναίσθηση & αποδοχή), της Γνωσιακής-Συμπεριφορικής (εργαλεία στο "εδώ και τώρα") και της Συστημικής Θεραπείας (κατανόηση σχέσεων και συστημάτων).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Πώς μπορώ να ξεκινήσω τη θεραπεία;</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-inner">
+                            Το πρώτο βήμα είναι πολύ απλό. Μπορείτε να με καλέσετε στο τηλέφωνο 6947840012 για να ορίσουμε από κοινού την ημέρα και την ώρα της πρώτης μας διαδικτυακής συνάντησης.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <section class="cta-section">
         <div class="container">
             <div class="section-label reveal">Το Πρωτο Βημα</div>
             <h2 class="section-title reveal reveal-delay-1">Η Αλλαγή Ξεκινάει <em>Σήμερα</em></h2>
             <p class="reveal reveal-delay-2">Σήμερα εστιάζω αποκλειστικά στην παροχή διαδικτυακών συνεδριών. Επικοινωνήστε για να ορίσουμε την πρώτη σας συνεδρία σε ένα περιβάλλον απόλυτης αποδοχής και ασφάλειας.</p>
             <div class="reveal reveal-delay-3">
-                <a href="mailto:Elenachr.psy@outlook.com" class="btn-light">
-                    Στειλτε Email
+                <a href="tel:6947840012" class="btn-light">
+                    Καλεστε Τωρα
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
             </div>
@@ -1137,7 +1223,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <h3 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; color: var(--white); margin-bottom: 16px;">Έλενα Χριστοδουλάκη</h3>
-                    <p>Αδειούχος Ψυχολόγος - Συμβουλευτική Ψυχολόγος (MSc). Ένας εκλεπτυσμένος και ασφαλής ψηφιακός χώρος, χωρίς γεωγραφικούς περιορισμούς.</p>
+                    <p>Ψυχολόγος - Συμβουλευτική Ψυχολόγος (MSc). Ένας εκλεπτυσμένος και ασφαλής ψηφιακός χώρος, χωρίς γεωγραφικούς περιορισμούς.</p>
                 </div>
                 <div class="footer-contact">
                     <h4>Στοιχεια Επικοινωνιας</h4>
@@ -1178,7 +1264,7 @@
             }, 1200);
         });
 
-        // Navigation scroll effect (White background when scrolled)
+        // Navigation scroll effect
         const nav = document.getElementById('nav');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -1201,6 +1287,25 @@
             mobileMenu.classList.remove('active');
             document.body.style.overflow = '';
         }
+
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const parent = question.parentElement;
+                const isActive = parent.classList.contains('active');
+                
+                // Close all
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // Open if it wasn't active
+                if (!isActive) {
+                    parent.classList.add('active');
+                }
+            });
+        });
 
         // Reveal on scroll
         const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -40px 0px' };
