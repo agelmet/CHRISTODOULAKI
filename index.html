@@ -6,7 +6,7 @@
     <title>Έλενα Χριστοδουλάκη (MSc) — Ψυχολόγος - Συμβουλευτική Ψυχολόγος</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Outfit:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         /* ═══════════════════════════════════════
@@ -135,19 +135,21 @@
         }
         .preloader-text {
             font-family: var(--font-display);
-            font-size: 2rem;
-            color: var(--charcoal);
+            font-style: italic;
+            font-weight: 600;
+            font-size: 2.5rem;
+            color: var(--brown);
             animation: preloaderPulse 1.6s ease-in-out infinite;
         }
         .preloader-line {
             width: 60px;
             height: 1px;
             background: var(--brown);
-            margin-top: 24px;
+            margin-top: 16px;
             animation: preloaderLine 1.6s ease-in-out infinite;
         }
         @keyframes preloaderPulse {
-            0%, 100% { opacity: 0.4; transform: scale(0.96); }
+            0%, 100% { opacity: 0.5; transform: scale(0.98); }
             50% { opacity: 1; transform: scale(1); }
         }
         @keyframes preloaderLine {
@@ -156,7 +158,7 @@
         }
 
         /* ═══════════════════════════════════════
-           NAVIGATION (White Background)
+           NAVIGATION & CALLIGRAPHIC LOGO
         ═══════════════════════════════════════ */
         .nav {
             position: fixed;
@@ -169,7 +171,7 @@
         }
         .nav.scrolled {
             background: #ffffff;
-            padding: 15px 0;
+            padding: 12px 0;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
         .nav-inner {
@@ -177,17 +179,50 @@
             align-items: center;
             justify-content: space-between;
         }
-        .nav-logo-text {
+        
+        /* New Calligraphic Logo Styling */
+        .nav-logo-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.4s var(--ease-out-expo);
+        }
+        .nav-logo-wrapper:hover {
+            transform: scale(1.02);
+        }
+        .nav-logo-name {
             font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-weight: 500;
-            color: var(--charcoal);
-            letter-spacing: 0.02em;
-            transition: color 0.3s ease;
+            font-style: italic;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--brown-dark);
+            line-height: 1;
+            /* Elegant Shadow to make it pop */
+            text-shadow: 2px 2px 4px rgba(142, 101, 69, 0.2), 0 0 15px rgba(142, 101, 69, 0.1);
+            transition: all 0.4s var(--ease-out-expo);
         }
-        .nav-logo-text:hover {
-            color: var(--brown);
+        .nav.scrolled .nav-logo-name {
+            font-size: 1.8rem;
+            text-shadow: 1px 1px 3px rgba(142, 101, 69, 0.15);
         }
+        .nav-logo-title {
+            font-family: var(--font-body);
+            font-size: 0.6rem;
+            font-weight: 400;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-top: 6px;
+            margin-left: 2px;
+            transition: all 0.4s var(--ease-out-expo);
+        }
+        .nav.scrolled .nav-logo-title {
+            font-size: 0.55rem;
+            margin-top: 4px;
+        }
+
         .nav-links {
             display: flex;
             align-items: center;
@@ -770,7 +805,7 @@
         }
 
         /* ═══════════════════════════════════════
-           CTA SECTION
+           CTA SECTION (Fixed Contrast)
         ═══════════════════════════════════════ */
         .cta-section {
             padding: clamp(100px, 12vw, 160px) 0;
@@ -793,6 +828,7 @@
             max-width: 800px;
             margin: 0 auto 24px;
         }
+        /* Fixed Contrast for "Σήμερα" */
         .cta-section .section-title em { 
             color: var(--off-white); 
         }
@@ -826,7 +862,7 @@
         }
 
         /* ═══════════════════════════════════════
-           FOOTER
+           FOOTER & SOCIAL ICONS
         ═══════════════════════════════════════ */
         .footer {
             background: var(--charcoal);
@@ -840,6 +876,15 @@
             padding-bottom: clamp(50px, 6vw, 80px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
+        .footer-brand h3 {
+            font-family: var(--font-display); 
+            font-size: 2rem; 
+            font-style: italic;
+            font-weight: 500; 
+            color: var(--brown-light); 
+            margin-bottom: 8px;
+            letter-spacing: 0.02em;
+        }
         .footer-brand p {
             font-size: 0.95rem;
             font-weight: 300;
@@ -848,43 +893,50 @@
             margin-top: 10px;
             max-width: 360px;
         }
+
         /* Social Media Styling */
         .footer-socials {
             display: flex;
-            gap: 12px;
-            margin-top: 24px;
+            gap: 16px;
+            margin-top: 28px;
             align-items: center;
         }
         .footer-social-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 38px;
-            height: 38px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.15);
-            color: rgba(255,255,255,0.7);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.02);
             transition: all 0.3s ease;
         }
         .footer-social-link:hover {
-            border-color: var(--brown-light);
-            background: rgba(255,255,255,0.05);
+            border-color: var(--brown);
+            background: rgba(142, 101, 69, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(142, 101, 69, 0.2);
         }
         .footer-social-link img {
-            width: 16px;
-            height: 16px;
+            width: 20px;
+            height: 20px;
             object-fit: contain;
-            filter: brightness(0) invert(1);
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
+            /* Removed white filter so original colors show */
+            transition: transform 0.3s ease;
         }
         .footer-social-link:hover img {
-            opacity: 1;
+            transform: scale(1.1);
         }
         .footer-social-link svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
+            width: 20px;
+            height: 20px;
+            fill: #ffffff;
+            transition: fill 0.3s ease, transform 0.3s ease;
+        }
+        .footer-social-link:hover svg {
+            fill: #ffffff;
+            transform: scale(1.1);
         }
         
         .footer h4 {
@@ -974,6 +1026,7 @@
         }
 
         @media (max-width: 768px) {
+            .nav-logo-name { font-size: 1.8rem; }
             .roadmap-steps { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
             .hero-title { font-size: clamp(2.5rem, 9vw, 3.5rem); }
@@ -993,8 +1046,9 @@
     <!-- NAVIGATION -->
     <nav class="nav" id="nav">
         <div class="container nav-inner">
-            <a href="#top" class="nav-logo-text">
-                Έλενα Χριστοδουλάκη
+            <a href="#top" class="nav-logo-wrapper">
+                <span class="nav-logo-name">Έλενα Χριστοδουλάκη</span>
+                <span class="nav-logo-title">Ψυχολόγος - Συμβουλευτική Ψυχολόγος</span>
             </a>
             <div class="nav-links">
                 <a href="#about">Βιογραφικο</a>
@@ -1259,7 +1313,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <h3 style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 400; color: var(--white); margin-bottom: 8px;">Έλενα Χριστοδουλάκη</h3>
+                    <h3 style="font-family: var(--font-display); font-size: 2rem; font-style: italic; font-weight: 500; color: var(--brown-light); margin-bottom: 8px; letter-spacing: 0.02em;">Έλενα Χριστοδουλάκη</h3>
                     <p style="margin-top: 0; margin-bottom: 24px;">Ψυχολόγος - Συμβουλευτική Ψυχολόγος (MSc). Ένας εκλεπτυσμένος και ασφαλής ψηφιακός χώρος, χωρίς γεωγραφικούς περιορισμούς.</p>
                     
                     <!-- Social Media Section -->
